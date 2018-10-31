@@ -1,0 +1,18 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>登录成功,3秒后回到主页</h1>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var t1=window.setTimeout(window.location.href='http://localhost:8081/index',3000);
+	});
+</script>
+
+</html>
