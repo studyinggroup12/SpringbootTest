@@ -21,13 +21,13 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	@Column(nullable=true,name="username")
+	@Column(unique=true,nullable=false,name="username")
 	private String username;
-	@Column(nullable=true,name="password")
+	@Column(nullable=false,name="password")
 	private String password;
-	@Column(nullable=true,name="email")
+	@Column(nullable=false,name="email")
 	private String email;
-	@Column(nullable=true,name="phone")
+	@Column(nullable=false,name="phone")
 	private String phone;
 	
 	public User() {
