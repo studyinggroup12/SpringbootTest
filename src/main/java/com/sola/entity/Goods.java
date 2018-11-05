@@ -13,10 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="goods")
 public class Goods implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3502730795421574770L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
@@ -36,7 +33,17 @@ public class Goods implements Serializable{
 	private Integer startClick;
 	@Column(name="typeid")
 	private Integer typeId;
+	@Column(name="imgsrc",nullable=false)
+	private String imgSrc;
 	
+	
+	
+	public String getImgSrc() {
+		return imgSrc;
+	}
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
+	}
 	public Integer getStartClick() {
 		return startClick;
 	}
