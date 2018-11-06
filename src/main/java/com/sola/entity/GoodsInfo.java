@@ -1,15 +1,25 @@
 package com.sola.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="goodsinfo")
 public class GoodsInfo {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+	@Column(name="goodsid",nullable=false)
 	private Integer goodsId;
+	@Column(name="sizeid",nullable=false)
 	private Integer sizeId;
+	@Column(name="colorid",nullable=false)
 	private Integer colorId;
+	@Column(name="stockings",nullable=false)
 	private Integer stockings;
 	
 	public GoodsInfo() {

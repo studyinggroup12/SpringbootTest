@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="goods")
 public class Goods implements Serializable{
-
+	private static final long serialVersionUID = -714071795694743034L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;

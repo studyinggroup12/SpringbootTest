@@ -15,14 +15,22 @@ public class ShopController {
 	private GoodsService goodService;
 	
 	@RequestMapping(value="/goods/{typeId}",method=RequestMethod.GET)
-	public String Mens_Single(@PathVariable Integer typeId,Model model) {
-		model.addAttribute(goodService.findAllByTypeId(typeId));
-		return "men_single";
+	public String findGoodsByTypeId(@PathVariable Integer typeId,Model model) {
+		model.addAttribute("goods",goodService.findAllByTypeId(typeId));
+		return "mens";
 	}
 	
-	@RequestMapping(value="/men_single")
+	@RequestMapping(value="/goods/{typeId}/{id}",method=RequestMethod.GET)
+	public String findGoodById(@PathVariable Integer id,@PathVariable Integer typeId,Model model) {
+		System.out.println(goodService.findById(id).toString());
+		model.addAttribute("good", goodService.findById(id));
+		System.out.println(goodService.findById(id).get("goodsName"));
+		return "mens_single";
+	}
+	
+	@RequestMapping(value="/mens_single")
 	public String Mens_Single2() {
-		return "men_single";
+		return "mens_single";
 	}
 	
 	
