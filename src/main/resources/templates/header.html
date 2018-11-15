@@ -2,6 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+<!-- Custom-StyleSheet-Links -->
+<!-- Bootstrap-CSS -->	   <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"	type="text/css" media="all">
+<!-- Index-Page-CSS -->	   <link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}" type="text/css" media="all">
+<!-- Header-Slider-CSS --> <link rel="stylesheet" href="css/fluid_dg.css" th:href="@{/css/fluid_dg.css}" id="fluid_dg-css" type="text/css" media="all">
+<!-- //Custom-StyleSheet-Links -->
+
+<!-- Fonts -->
+<!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Serif:400,700"	   type="text/css" media="all">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400,700"	   type="text/css" media="all">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,500" type="text/css" media="all"> -->
+<!-- //Fonts -->
+
+<!-- Font-Awesome-File-Links -->
+<!-- CSS --> <link rel="stylesheet" href="css/font-awesome.css" th:href="@{/css/font-awesome.css}" type="text/css" media="all">
+<!-- TTF --> <link rel="stylesheet" href="fonts/fontawesome-webfont.ttf" th:href="@{/fonts/fontawesome-webfont.ttf}" type="text/css" media="all">
+<!-- //Font-Awesome-File-Links -->
+
+<!-- Supportive-Modernizr-JavaScript --><script src="js/modernizr-2.6.2-respond-1.1.0.min.js" th:src="@{js/modernizr-2.6.2-respond-1.1.0.min.js}"></script>
+
+<!-- Default-JavaScript --><script src="/webjars/jquery/2.2.3/jquery.min.js"></script>
+<!-- Vue-Js --><script type="text/javascript" src="/webjars/vue/2.0.0/vue.min.js"></script>
+<!-- Vue-Resouce-JS --><script src="/webjars/vue-resource/0.9.3/vue-resource.min.js"></script>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
 </head>
@@ -9,7 +33,34 @@
 	<div th:fragment="header">
 			<!-- Header -->
 	<div class="agileheader" id="agileheadermens">
-
+			<script type="text/javascript">
+				/*	$(document).ready(function(){ 
+						$.ajax({
+					        url:"men",
+					        data:"",
+					        type: "GET",
+					        dataType:'JSON',
+					        async:true,
+					        success:function(data){
+				         	   alert("成功")
+				          }
+					     });　　 
+				　　}); */
+					window.onload = function(){
+						var vm=new Vue({
+							data:{},
+							method:{
+								types:function(){
+									this.$http.post('/men').then(function(res){
+										alert("成功")
+									},function(res){
+										alert("失败")
+									});
+								}
+							}
+						});
+					}
+				</script>
 		<!-- Navigation -->
 		<nav class="navbar navbar-default w3l navbar-fixed-top">
 			<div class="container">
@@ -35,12 +86,22 @@
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-1">
 										<ul class="multi-column-dropdown">
 											<li class="heading">FEATURED</li>
-											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>New Arrivals</a></li>
+											<li>{{ type }}</li>
+											<li v-for="type in types">
+												<a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>{{ type.type }}</a>
+											</li>
+											<!-- <div th:each="man,manStat:${men}">
+												<li><a href="mens.html" th:href="@{/goods/1}" th:text="${man.type}"><i class="fa fa-angle-right" aria-hidden="true"></i>New Arrivals</a></li>
+											</div> -->
+											<!-- 
+											备份
+											<li><a href="mens.html" th:href="@{/goods/1}"><i class="fa fa-angle-right" aria-hidden="true"></i>New Arrivals</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Online Only</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Brands</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Clearance Sale</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Discount Store</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Editor's Pick</a></li>
+											-->
 										</ul>
 									</div>
 
@@ -268,6 +329,7 @@
 				</div>
 				<!-- //Popup-Box -->
 
+
 		</div>
 		<!-- //Header-Top-Bar-(Hidden) -->
 
@@ -278,4 +340,5 @@
 	</div>
 	</div>
 </body>
+
 </html>

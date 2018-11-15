@@ -22,8 +22,8 @@ public class ShopController {
 	
 	@RequestMapping(value="/goods/{typeId}/{id}",method=RequestMethod.GET)
 	public String findGoodById(@PathVariable Integer id,@PathVariable Integer typeId,Model model) {
-		model.addAttribute("good", goodService.findById2(id));
-		System.out.println(goodService.findById2(id));
+		model.addAttribute("good", goodService.findById(id).get());
+		goodService.findById(id);
 		return "mens_single";
 	}
 	

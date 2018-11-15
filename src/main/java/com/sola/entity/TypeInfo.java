@@ -12,6 +12,8 @@ public class TypeInfo {
 	@Id
 	@GeneratedValue
 	private Integer id;
+	@Column(name="fatherid")
+	private Integer fatherId;
 	@Column(unique=true,nullable=false,name="type")
 	private String type;
 	public Integer getId() {
