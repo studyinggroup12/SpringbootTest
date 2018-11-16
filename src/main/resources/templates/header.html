@@ -31,36 +31,9 @@
 </head>
 <body>
 	<div th:fragment="header">
-			<!-- Header -->
+	
+	<!-- Header -->
 	<div class="agileheader" id="agileheadermens">
-			<script type="text/javascript">
-				/*	$(document).ready(function(){ 
-						$.ajax({
-					        url:"men",
-					        data:"",
-					        type: "GET",
-					        dataType:'JSON',
-					        async:true,
-					        success:function(data){
-				         	   alert("成功")
-				          }
-					     });　　 
-				　　}); */
-					window.onload = function(){
-						var vm=new Vue({
-							data:{},
-							method:{
-								types:function(){
-									this.$http.post('/men').then(function(res){
-										alert("成功")
-									},function(res){
-										alert("失败")
-									});
-								}
-							}
-						});
-					}
-				</script>
 		<!-- Navigation -->
 		<nav class="navbar navbar-default w3l navbar-fixed-top">
 			<div class="container">
@@ -84,11 +57,10 @@
 								<div class="row">
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-1">
-										<ul class="multi-column-dropdown">
+										<ul class="multi-column-dropdown" id="category">
 											<li class="heading">FEATURED</li>
-											<li>{{ type }}</li>
 											<li v-for="type in types">
-												<a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>{{ type.type }}</a>
+												<a :href="'/goods/'+ type.urlName"><i class="fa fa-angle-right" aria-hidden="true"></i>{{ type.type }}</a>
 											</li>
 											<!-- <div th:each="man,manStat:${men}">
 												<li><a href="mens.html" th:href="@{/goods/1}" th:text="${man.type}"><i class="fa fa-angle-right" aria-hidden="true"></i>New Arrivals</a></li>
@@ -328,7 +300,29 @@
 					</div>
 				</div>
 				<!-- //Popup-Box -->
-
+				<script type="text/javascript">
+		new Vue({
+			el:'#category',
+			data:{
+					types:[]
+				},
+			created:function(){
+				console.log("进入了方法")
+				var self = this;
+				$.ajax({
+					url:"/men",
+					type:"get",
+					data:{},
+					dataType:"json"
+				}).then(function(res){
+					console.log(res)
+					self.types=res
+				}).fail(function(){
+					alert("失败")
+				})
+			}	
+		});
+	</script>
 
 		</div>
 		<!-- //Header-Top-Bar-(Hidden) -->

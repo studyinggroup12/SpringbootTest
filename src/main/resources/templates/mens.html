@@ -28,6 +28,9 @@
 <!-- TTF --> <link rel="stylesheet" href="/fonts/fontawesome-webfont.ttf" type="text/css" media="all">
 <!-- //Font-Awesome-File-Links -->
 
+<!-- Default-JavaScript --><script src="/webjars/jquery/2.2.3/jquery.min.js"></script>
+<!-- Vue-Js --><script type="text/javascript" src="/webjars/vue/2.0.0/vue.min.js"></script>
+<!-- Vue-Resouce-JS --><script src="/webjars/vue-resource/0.9.3/vue-resource.min.js"></script>
 </head>
 <!-- //Head -->
 
@@ -99,7 +102,7 @@
 							</li>
 						</ul>
 					</div>
-					<a href="mens_single.html" th:href="@{'/goods'+'/'+${good.typeId}+'/'+${good.id}}">
+					<a href="mens_single.html" th:href="${good.id}">
 						<div class="cbp-pginfo w3layouts">
 							<h3 th:text="${good.goodsName}"></h3>
 							<span class="cbp-pgprice" th:text="${good.price}"></span>

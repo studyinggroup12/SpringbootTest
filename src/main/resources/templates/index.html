@@ -50,34 +50,7 @@
 	<div th:include="header :: header">
 	
 	</div>
-	<script type="text/javascript">
-				/*	$(document).ready(function(){ 
-						$.ajax({
-					        url:"men",
-					        data:"",
-					        type: "GET",
-					        dataType:'JSON',
-					        async:true,
-					        success:function(data){
-				         	   alert("成功")
-				          }
-					     });　　 
-				　　}); */
-					window.onload = function(){
-						var vm=new Vue({
-							data:{},
-							method:{
-								types:function(){
-									this.$http.post('/men').then(function(res){
-										alert("成功")
-									},function(res){
-										alert("失败")
-									});
-								}
-							}
-						});
-					}
-				</script>
+
 
 
 		<!-- Header-Slider -->

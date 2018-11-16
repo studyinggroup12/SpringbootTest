@@ -16,6 +16,22 @@ public class TypeInfo {
 	private Integer fatherId;
 	@Column(unique=true,nullable=false,name="type")
 	private String type;
+	@Column(name="urlname",unique=true)
+	private String urlName;
+	
+	
+	public Integer getFatherId() {
+		return fatherId;
+	}
+	public void setFatherId(Integer fatherId) {
+		this.fatherId = fatherId;
+	}
+	public String getUrlName() {
+		return urlName;
+	}
+	public void setUrlName(String urlName) {
+		this.urlName = urlName;
+	}
 	public Integer getId() {
 		return id;
 	}

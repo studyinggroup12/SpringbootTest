@@ -13,4 +13,5 @@ public interface GoodsService extends JpaRepository<Goods, Integer>{
 	@Query(value="select * from goods where id=?1",nativeQuery=true)
 	Goods findById2(Integer id);
 	
+	
 }

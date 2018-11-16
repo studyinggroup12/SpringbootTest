@@ -30,6 +30,8 @@
 <!-- //Font-Awesome-File-Links -->
 
 <!-- Default-JavaScript --><script src="/webjars/jquery/2.2.3/jquery.min.js"></script>
+<!-- Vue-Js --><script type="text/javascript" src="/webjars/vue/2.0.0/vue.min.js"></script>
+<!-- Vue-Resouce-JS --><script src="/webjars/vue-resource/0.9.3/vue-resource.min.js"></script>
 
 </head>
 <!-- //Head -->
@@ -147,10 +149,10 @@
 						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 							<div class="accordion-image">
 								<div class="ac-img">
-									<a href="#"><img src="images/product-1.jpg" alt="Groovy Apparel"></a>
+									<a href="#"><img src="/images/product-1.jpg" alt="Groovy Apparel"></a>
 								</div>
 								<div class="ac-img">
-									<a href="#"><img src="images/product-2.jpg" alt="Groovy Apparel"></a>
+									<a href="#"><img src="/images/product-2.jpg" alt="Groovy Apparel"></a>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -168,7 +170,7 @@
 							<h3>"Excellent Quality & Fitting!"</h3>
 							<h4>Léon, Certified Buyer.</h4>
 							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-							<span>5 Stars</span>
+							<span th:text="|${good.stars/good.startClick} 星|"></span>
 							<a href="#" class="next">Next Review &rarr;</a>
 						</div>
 					</div>
