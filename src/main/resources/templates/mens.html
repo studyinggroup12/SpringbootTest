@@ -42,7 +42,19 @@
 	<div th:include="header :: header">
 	
 	</div>
-
+	<script  type="text/javascript">
+		new Vue({
+			el:'#goods',
+			data:{
+					goods:{}
+			},
+			created:function(){
+				var self=this
+				self.goods=[[${goods}]]
+				console.log(self.goods)
+			}
+		});
+	</script>
 
 	<!-- //Header -->
 
@@ -55,21 +67,21 @@
 	<!-- Heading -->
 	<h1 class="w3wthreeheadingaits">MEN'S CLOTHING</h1>
 	<!-- //Heading -->
-
+	{{ goods }}
 
 
 	<!-- Men's-Product-Display -->
-	<div class="wthreeproductdisplay">
+	<div class="wthreeproductdisplay" v-cloak>
 		<div id="cbp-pgcontainer" class="cbp-pgcontainer">
 			<ul class="cbp-pggrid">
-				<li class="wthree aits w3l" th:each="good,goodStat:${goods}">
+				<li class="wthree aits w3l" v-for="good in goods" id="goods">
 					<div class="cbp-pgcontent" id="men-8">
 						<span class="cbp-pgrotate"><i class="fa fa-exchange" aria-hidden="true"></i></span>
-						<a href="mens_single.html" th:href="@{/mens/${id}}">
+						<a :href="good.id">
 							<div class="cbp-pgitem a3ls">
 								<div class="cbp-pgitem-flip">
-									<img th:src="|${good.imgSrc}-back.jpg|" alt="Groovy Apparel">
-									<img th:src="|${good.imgSrc}-front.jpg|" alt="Groovy Apparel">
+									<img :src="good.imgSrc+'-back.jpg'" alt="Groovy Apparel">
+									<img :src="good.imgSrc+'-front.jpg'"  alt="Groovy Apparel">
 								</div>
 							</div>
 						</a>
@@ -102,10 +114,10 @@
 							</li>
 						</ul>
 					</div>
-					<a href="mens_single.html" th:href="${good.id}">
+					<a :href="good.id">
 						<div class="cbp-pginfo w3layouts">
-							<h3 th:text="${good.goodsName}"></h3>
-							<span class="cbp-pgprice" th:text="${good.price}"></span>
+							<h3>{{good.goodsName}}</h3>
+							<span class="cbp-pgprice">{{good.price}}</span>
 						</div>
 					</a>
 				</li>

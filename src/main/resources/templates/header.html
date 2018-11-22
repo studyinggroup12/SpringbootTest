@@ -301,29 +301,28 @@
 				</div>
 				<!-- //Popup-Box -->
 				<script type="text/javascript">
-		new Vue({
-			el:'#category',
-			data:{
-					types:[]
-				},
-			created:function(){
-				console.log("进入了方法")
-				var self = this;
-				$.ajax({
-					url:"/men",
-					type:"get",
-					data:{},
-					dataType:"json"
-				}).then(function(res){
-					console.log(res)
-					self.types=res
-				}).fail(function(){
-					alert("失败")
-				})
-			}	
-		});
-	</script>
-
+					new Vue({
+						el:'#category',
+						data:{
+								types:[]
+							},
+						created:function(){
+							console.log("进入了方法")
+							var self = this;
+							$.ajax({
+								url:"/men",
+								type:"get",
+								data:{},
+								dataType:"json"
+							}).then(function(res){
+								console.log(res)
+								self.types=res
+							}).fail(function(){
+								alert("发生未知错误，请联系管理员！")
+							})
+						}	
+					});
+				</script>
 		</div>
 		<!-- //Header-Top-Bar-(Hidden) -->
 

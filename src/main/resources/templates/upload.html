@@ -1,0 +1,51 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="multipart/form-data; charset=UTF-8" />
+<title>Insert title here</title>
+<!-- CSS -->
+<!-- Bootstrap-CSS --><link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"	type="text/css" media="all">
+<!-- JS -->
+<!-- Default-JavaScript --><script src="/webjars/jquery/2.2.3/jquery.min.js"></script>
+<!-- Vue-Js --><script type="text/javascript" src="/webjars/vue/2.0.0/vue.min.js"></script>
+<!-- Vue-Resouce-JS --><script src="/webjars/vue-resource/0.9.3/vue-resource.min.js"></script>
+</head>
+<body>
+	<div id="file">
+		<input id="up" type="file" name="file" >
+		<input type="button" @click="post()" value="提交" >
+		<span id="msg">{{ msg }}</span>
+	</div>
+		<script>
+			
+			new Vue({
+				el:'#file',
+				data:{
+					msg:''
+				},
+				methods:{
+						post:function(){
+						var file = new FormData();
+						file.append("file",document.getElementById("up").files[0])
+						var self=this
+						$.ajax({
+							url:"/upload",
+							type:"post",
+							data:file,
+					        contentType: false, 
+					        processData: false,
+							dataType:"text"
+						}).then(function(res){
+							console.log(res)
+							self.msg=res
+						}).fail(function(){
+							self.msg="网络问题"
+						})
+					}
+				}
+			});
+		</script>
+</body>
+</html>
+
